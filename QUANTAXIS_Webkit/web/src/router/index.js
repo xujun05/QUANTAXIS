@@ -88,6 +88,16 @@ export default new Router({
           'path': '/personal/visual/:id',
           name: 'visual',
           component: require('@/components/Personal/visual.vue')
+        },
+        {
+          'path': '/personal/strategy/:id',
+          name: 'strategy',
+          component: require('@/components/Personal/strategy.vue')
+        },
+        {
+          'path': '/personal/tree',
+          name: 'tree',
+          component: require('@/components/Personal/tree.vue')
         }
       ]
     },
