@@ -21,17 +21,16 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-import asyncio
-import datetime
-import re
-import time
-
-import motor
 import pymongo
+import re
+import datetime
+import time
+import motor
+import asyncio
 from motor import motor_asyncio
-from motor.motor_asyncio import (AsyncIOMotorClient, AsyncIOMotorCollection,
-                                 AsyncIOMotorCommandCursor,
-                                 AsyncIOMotorDatabase)
+from motor.motor_asyncio import (AsyncIOMotorCollection, AsyncIOMotorClient, AsyncIOMotorDatabase,
+                                 AsyncIOMotorCommandCursor)
+from .QALogs import QA_util_log_info
 
 from QUANTAXIS.QAUtil.QALogs import QA_util_log_info
 
@@ -51,14 +50,11 @@ def QA_util_sql_mongo_setting(host='127.0.0.1', port=27017, user_name="admin", u
 
 def QA_util_sql_async_mongo_setting(ip='127.0.0.1', port=27017):
     QA_sql_async_mongo_client = AsyncIOMotorClient(ip, int(port))
-    QA_util_log_info('ip:{},port{}'.format(str(ip), str(port)))
+    QA_util_log_info('ip:{},port{}'.format(str(ip),str(port)))
     return QA_sql_async_mongo_client
 
 
-QA_util_sql_mongo_sort_ASCENDING = pymongo.ASCENDING
-QA_util_sql_mongo_sort_DESCENDING = pymongo.DESCENDING
-
-if __name__ == '__main__':
+if __name__=='__main__':
     # test async_mongo
-    client = QA_util_sql_async_mongo_setting().quantaxis.stock_day
+    client=QA_util_sql_async_mongo_setting().quantaxis.stock_day
     print(client)
